@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "Customer.hpp"
 #include <string>
 
 using namespace std;
@@ -58,24 +58,24 @@ void Customer::processPurchase(double amount, Product product) {
 string Customer::getProductsPurchased() const {
   string productsString = "";
   for (int i=0; i<productsPurchased.size(); i++) {
-    string line1 = "Product Name: " + productsPurchased.at(i).getName();
-    string line2 = "Product ID: " + to_string(productsPurchased.at(i).getID());
-    productsString = productsString + line1 + "\n" + line2 + "\n\n";
+    string line1 = "\tProduct Name: " + productsPurchased.at(i).getName();
+    string line2 = "\tProduct ID: " + to_string(productsPurchased.at(i).getID());
+    productsString = productsString + line1 + "\n" + line2 + "\n";
   }
   return productsString;
 }
 
 
 stringstream& operator<<(stringstream& ss, const Customer& customer) {
-  ss << "Customer Name: " << customer.getName() << endl;
-  ss << "Customer ID: " << customer.getID() << endl;
+  ss << "\tCustomer Name: " << customer.getName() << endl;
+  ss << "\tCustomer ID: " << customer.getID() << endl;
   if (customer.getCredit() == true) {
-    ss << "Has Credit: true" << endl;
+    ss << "\tHas Credit: true" << endl;
   }
   else if (customer.getCredit() == false) {
-    ss << "Has Credit: false" << endl;
+    ss << "\tHas Credit: false" << endl;
   }
-  ss << "Balance: " << customer.getBalance() << endl;
-  ss << "Products Purchased --" << endl << endl << customer.getProductsPurchased();
+  ss << "\tBalance: " << customer.getBalance() << endl;
+  ss << "\tProducts Purchased:" << endl << customer.getProductsPurchased();
   return ss;
 }

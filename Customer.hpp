@@ -1,7 +1,7 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-#include "Product.h"
+#include "Product.hpp"
 #include <string>
 #include <vector>
 

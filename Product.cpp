@@ -1,4 +1,4 @@
-#include "Product.h"
+#include "Product.hpp"
 #include <string>
 
 using namespace std;
@@ -41,6 +41,10 @@ double Product::getTotalPaid() const {
   return totalPaid;
 }
 
+double Product::getTotalMade() const {
+  return totalMade;
+}
+
 int Product::getInventoryCount() const {
   return inventory;
 }
@@ -65,6 +69,7 @@ void Product::reduceInventory(int purchaseQuantity) {
   }
   inventory -= purchaseQuantity;
   numSold += purchaseQuantity;
+  totalMade += getPrice() * purchaseQuantity;
 }
 
 double Product::getPrice() const {
@@ -85,13 +90,15 @@ double Product::getPrice() const {
 
 
 std::stringstream& operator<<(stringstream& ss, const Product& product) {
-  ss << "Product Name: " << product.getName() << endl;
-  ss << "Product ID: " << product.getID() << endl;
-  ss << "Description: " << product.getDescription() << endl;
-  ss << "Inventory: " << product.getInventoryCount() << endl;
-  ss << "Number Sold: " << product.getNumberSold() << endl;
-  ss << "Total Paid: " << product.getTotalPaid() << endl;
-  ss << "Price: ";
+  ss << "\tProduct Name: " << product.getName() << endl;
+  ss << "\tProduct ID: " << product.getID() << endl;
+  ss << "\tDescription: " << product.getDescription() << endl;
+  ss << "\tInventory: " << product.getInventoryCount() << endl;
+  ss << "\tNumber Sold: " << product.getNumberSold() << endl;
+  ss << "\tTotal Paid: " << product.getTotalPaid() << endl;
+  ss << "\tTotal Made: " << product.getTotalMade() << endl;
+  ss << "\tNet: " << product.getTotalPaid() - product.getTotalMade() << endl;
+  ss << "\tPrice: ";
   try {
     ss << product.getPrice();
   }

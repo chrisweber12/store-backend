@@ -14,6 +14,7 @@ public:
   std::string getDescription() const;
   void setDescription(std::string description);
   int getNumberSold() const;
+  double getTotalMade() const;
   double getTotalPaid() const;
   int getInventoryCount() const;
   void addShipment(int shipmentQuantity, double shipmentCost);
@@ -27,6 +28,7 @@ private:
   int inventory = 0;
   int numSold = 0;
   double totalPaid = 0;
+  double totalMade = 0;
 
 };
 
