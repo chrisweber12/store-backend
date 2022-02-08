@@ -6,10 +6,12 @@
 
 using namespace std;
 
+//Output store information
 void printInfo(Store &s) {
     cout << endl << "-------Store information-------" << endl << s;
 }
 
+// Let user select action and perform
 void menuSelection(Store &s) {
     cout << "\nEnter a number as an option:" << endl
          << "1 - Change store name" << endl
@@ -27,34 +29,34 @@ void menuSelection(Store &s) {
     double cost;
     cin >> choice;
     switch(choice) {
-        case 1:
+        case 1: // Change store name
             cout << "Enter new name: ";
             cin.get();
             getline(cin, name);
             s.setName(name);
             cout << "Name changed." << endl;
             break;
-        case 2:
+        case 2: // Add product
             cout << "Enter product ID: ";
             cin >> id;
             cout << "Enter product name: ";
             cin.get();
             getline(cin, name);
             if (s.addProduct(id, name)==1) {
-            cout << "Product added." << endl;
-        }
+                cout << "Product added." << endl;
+            }
             break;
-        case 3:
+        case 3: // Add customer
             cout << "Enter customer ID: ";
             cin >> id;
             cout << "Enter customer name: ";
             cin.get();
             getline(cin, name);
             if (s.addCustomer(id, name)==1) {
-            cout << "Customer added." << endl;
-        }
+                cout << "Customer added." << endl;
+            }
             break;
-        case 4:
+        case 4: // Take shipment
             cout << "Enter product ID: ";
             cin >> id;
             cout << "Enter quantity: ";
@@ -65,7 +67,7 @@ void menuSelection(Store &s) {
                 cout << "Shipment taken." << endl;
             }
             break;
-        case 5:
+        case 5: // Sell product
             cout << "Enter customer ID: ";
             cin >> cid;
             cout << "Enter product ID: ";
@@ -73,15 +75,16 @@ void menuSelection(Store &s) {
             cout << "Enter quantity: ";
             cin >> quantity;
             if (s.sellProduct(cid, pid, quantity)==1) {
-            cout << "Product sold." << endl;
-        }
+                cout << "Product sold." << endl;
+            }
             break;
-        case 6:
+        case 6: // Get store information
             printInfo(s);
             break;
     }
 }
 
+// Looping driver to show implementation of classes
 int main() {
     cout << "Enter store name: ";
     string name;
